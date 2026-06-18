@@ -1,0 +1,76 @@
+[Basic]
+DEM=/home/psdrfabian/EF5/Bali_Run/data/basic/dem.tif
+DDM=/home/psdrfabian/EF5/Bali_Run/data/basic/flowdir.tif
+FAM=/home/psdrfabian/EF5/Bali_Run/data/basic/flowacc.tif
+PROJ=geographic
+ESRIDDM=true
+SelfFAM=false
+
+[PETForcing CLIMO]
+LOC=/home/psdrfabian/EF5/EF5-Global-Parameters/FAO_PET/
+FREQ=1m
+UNIT=mm/d
+NAME=FAO.PET.MM.mm_per_day.proc.tif
+TYPE=TIF
+
+[PrecipForcing IMERGE]
+TYPE=TIF
+UNIT=mm/30u
+FREQ=30u
+LOC=/home/psdrfabian/EF5/Bali_Run/data/precip/
+NAME=IMERG.YYYYMMDD_HHUU00.3B-HHR-E.MS.MRG.3IMERG.V07B.30minAccum.tif
+
+[Gauge 0]
+lat=-8.4750
+lon=115.1750
+outputts=true
+basinarea=75.0
+
+[Basin 0]
+gauge=0
+
+[CrestParamSet EF5Bali]
+wm_grid=/home/psdrfabian/EF5/Bali_Run/data/parameters/soil_param_wm.tif
+im_grid=/home/psdrfabian/EF5/Bali_Run/data/parameters/imperv.tif
+fc_grid=/home/psdrfabian/EF5/Bali_Run/data/parameters/soil_param_fc.tif
+b_grid=/home/psdrfabian/EF5/Bali_Run/data/parameters/soil_param_b.tif
+gauge=0
+wm=1.0
+b=1.0
+im=0.01
+ke=1.0
+fc=1.00
+iwu=75.0
+
+[KWParamSet EF5Bali]
+alpha_grid=/home/psdrfabian/EF5/Bali_Run/data/parameters/alpha.tif
+beta_grid=/home/psdrfabian/EF5/Bali_Run/data/parameters/beta.tif
+alpha0_grid=/home/psdrfabian/EF5/Bali_Run/data/parameters/alpha0.tif
+gauge=0
+alpha0=1.0
+alpha=1.0
+beta=1.0
+under=0.0001
+leaki=1.0
+th=10.0
+isu=00.0
+
+[Task CREST_Bali]
+STYLE=simu
+MODEL=crest
+ROUTING=KW
+BASIN=0
+PRECIP=IMERGE
+PET=CLIMO
+OUTPUT=/home/psdrfabian/EF5/Bali_Run/results
+STATES=/home/psdrfabian/EF5/Bali_Run/data/states
+defaultparamsgauge=0
+PARAM_SET=EF5Bali
+ROUTING_PARAM_Set=EF5Bali
+output_grids=MAXUNITSTREAMFLOW|MAXSTREAMFLOW
+TIMESTEP=30u
+TIME_BEGIN=20260223120000
+TIME_END=20260225000000
+
+[Execute]
+task=CREST_Bali
