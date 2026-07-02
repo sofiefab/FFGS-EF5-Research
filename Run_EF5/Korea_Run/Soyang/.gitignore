@@ -1,0 +1,5 @@
+data/precip/.tif      # 15 GB — regenerate with grid_precip_thiessen_mp.py
+data/basic/raw/.tif   # giant raw DEMs (SRTM/NGII)
+korea_dem.tif
+results/
+data/states/

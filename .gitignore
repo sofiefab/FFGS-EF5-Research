@@ -1,3 +1,14 @@
 ef5_env/
 *_env/
 __pycache__/
+# ---- EF5 large / regenerable (2026-07-02) ----
+**/data/precip/*.tif
+**/data/basic/raw/*.tif
+**/EF5_US_Run/EF5-dockerized/data/
+**/results/
+**/data/states/
+**/*SRTM_Korea*.tif
+**/*korea_dem*.tif
+**/_DEM/*.tif
+**/SRTM30m.tif
+**/1_Basic/_DEM/**
